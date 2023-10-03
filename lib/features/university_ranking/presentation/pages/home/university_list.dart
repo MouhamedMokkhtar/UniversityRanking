@@ -90,12 +90,11 @@ class _UniversityListState extends State<UniversityList> {
                   Expanded(
                     child: ListView.builder(
                       itemBuilder: (context,index){
-                        print("universities.length : ${universities.length}" );
-                        return index >= universities.length &&  state.universitiesSearchedList == null
+                        return index >= universities.length &&  state.universitiesSearchedList== null
                             ? const BottomLoader()
                             : UniversityListItem(university: universities[index] ,onUniversityPressed: (university) => _onUniversityPressed(context,university),);
                       },
-                      itemCount: state.hasReachedMax
+                      itemCount: state.hasReachedMax || state.universitiesSearchedList != null
                           ? universities.length
                           : universities.length + 1,
                       controller: _scrollController,
